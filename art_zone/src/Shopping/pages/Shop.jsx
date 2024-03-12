@@ -1,5 +1,5 @@
 import { Divider } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ProductList from "../components/ProductList";
 import { useParams } from "react-router-dom";
 import CreateProduct from "./CreateProduct";
@@ -7,33 +7,39 @@ import axios from "axios";
 import { useAuthStore } from "../../shared/store/useAuthStore";
 
 const Shop = () => {
-
   const [shopData, setShopData] = useState(null);
   const [productData, setProductData] = useState([]);
   const { shopId } = useParams();
   const { userId } = useAuthStore();
+  const [pageCreateReload, setPageCreateReload] = useState(false);
+  const [pageUpdateReload, setPageUpdateReload] = useState(false);
+  const [pageDeleteReload, setPageDeleteReload] = useState(false);
 
+  const fetchShopData = useCallback(async () => {
+    const token = localStorage.getItem("token");
 
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/shops/${shopId}`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      setShopData(response.data.shop);
+      setProductData(response.data.products);
+    } catch (err) {
+      console.error(err);
+    }
+  }, [pageCreateReload, pageUpdateReload, pageDeleteReload]);
 
   useEffect(() => {
-    const fetchShopData = async () => {
-      const token = localStorage.getItem('token');
-
-      try {
-        const response = await axios.get(`http://localhost:5000/shops/${shopId}`, {
-          headers: {
-            Authorization: 'Bearer ' + token
-          }
-          });
-        setShopData(response.data.shop);
-        setProductData(response.data.products);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
     fetchShopData();
-  }, []);
+    setPageCreateReload(false)
+    setPageUpdateReload(false)
+    setPageDeleteReload(false)
+  }, [fetchShopData]);
 
   if (!shopData) {
     return <div>Loading...</div>;
@@ -58,18 +64,27 @@ const Shop = () => {
           <h4 className="text-xl capitalize font-title font-normal">
             {shopData.address}
           </h4>
-          <h4 className="text-xl font-title font-normal">
-            {shopData.email}
-          </h4>
+          <h4 className="text-xl font-title font-normal">{shopData.email}</h4>
           <h4 className="text-l capitalize font-title font-normal mb-8">
             {shopData.phone_no}
           </h4>
-          {shopId == userId && <CreateProduct shopId={shopId}/>}
+          {shopId == userId && (
+            <CreateProduct
+              shopId={shopId}
+              setPageCreateReload={setPageCreateReload}
+            />
+          )}
         </div>
       </div>
       <Divider />
       <div>
-        {productData.length >0 && <ProductList productData={productData} />}
+        {productData.length > 0 && (
+          <ProductList
+            productData={productData}
+            setPageUpdateReload={setPageUpdateReload}
+            setPageDeleteReload={setPageDeleteReload}
+          />
+        )}
       </div>
     </div>
   );

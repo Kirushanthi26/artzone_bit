@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import DeleteProductDialog from "./DeleteProductDialog";
 
-const DeleteProduct = ({pid}) => {
+const DeleteProduct = ({ pid, setPageDeleteReload }) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -20,12 +20,17 @@ const DeleteProduct = ({pid}) => {
         color="error"
         size="medium"
         variant="contained"
-        sx={{ width: "100%"}}
+        sx={{ width: "100%" }}
         onClick={handleClickOpen}
       >
         Delete Product
       </Button>
-      <DeleteProductDialog handleClose={handleClose} open={open} pid={pid}/>
+      <DeleteProductDialog
+        handleClose={handleClose}
+        open={open}
+        pid={pid}
+        setPageDeleteReload={setPageDeleteReload}
+      />
     </>
   );
 };

@@ -5,7 +5,6 @@ import axios from "axios";
 
 const Shops = () => {
   const [shopData, setShopData] = useState([]);
-  console.log(shopData)
 
   useEffect(() => {
     const fetchShopData = async () => {

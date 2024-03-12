@@ -7,7 +7,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { Button } from "@mui/material";
 import axios from "axios";
 
-const DeleteProductDialog = ({ handleClose, open, pid }) => {
+const DeleteProductDialog = ({ handleClose, open, pid, setPageDeleteReload }) => {
   const handleDelete = async () => {
     const token = localStorage.getItem('token');
     
@@ -17,6 +17,7 @@ const DeleteProductDialog = ({ handleClose, open, pid }) => {
           Authorization: 'Bearer ' + token
         }
         });
+        setPageDeleteReload(true)
       handleClose();
     } catch (error) {
       console.error("Error deleting product:", error);

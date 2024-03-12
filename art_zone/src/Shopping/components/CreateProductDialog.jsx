@@ -9,7 +9,7 @@ import axios from 'axios';
 //import { useParams } from "react-router-dom";
 
 
-const CreateProductDialog = ({ handleClose, open, userID }) => {
+const CreateProductDialog = ({ handleClose, open, userID, setPageCreateReload }) => {
 
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
@@ -42,6 +42,7 @@ const CreateProductDialog = ({ handleClose, open, userID }) => {
         }
       );
       console.log(response.data);
+      setPageCreateReload(true)
       // Reset form fields
       setProductName('');
       setProductPrice('');

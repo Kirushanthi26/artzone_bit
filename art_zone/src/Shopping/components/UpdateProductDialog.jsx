@@ -7,7 +7,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { Button } from "@mui/material";
 import axios from 'axios';
 
-const UpdateProductDialog = ({ handleClose, open, pid, productNameProps, productPriceProps, productDescriptionProps }) => {
+const UpdateProductDialog = ({ handleClose, open, pid, productNameProps, productPriceProps, productDescriptionProps,setPageUpdateReload }) => {
   const [productName, setProductName] = useState(productNameProps);
   const [productPrice, setProductPrice] = useState(productPriceProps);
   const [productImage, setProductImage] = useState(null);
@@ -43,6 +43,7 @@ const UpdateProductDialog = ({ handleClose, open, pid, productNameProps, product
         }
       );
       console.log(response.data);
+      setPageUpdateReload(true)
       setError('');
       handleClose();
     } catch (err) {

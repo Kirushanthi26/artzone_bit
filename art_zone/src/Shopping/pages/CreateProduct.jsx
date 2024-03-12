@@ -4,7 +4,7 @@ import { useState } from "react";
 import CreateProductDialog from "../components/CreateProductDialog";
 //import { useParams } from "react-router-dom";
 
-const CreateProduct = ({shopId}) => {
+const CreateProduct = ({shopId, setPageCreateReload}) => {
   // let { userID } = useParams();
   // console.log(userID)
 
@@ -30,7 +30,7 @@ const CreateProduct = ({shopId}) => {
       >
         Create Product
       </Button>
-      <CreateProductDialog handleClose={handleClose} open={open} userID={shopId}/>
+      <CreateProductDialog handleClose={handleClose} open={open} userID={shopId} setPageCreateReload={setPageCreateReload}/>
     </>
   );
 };

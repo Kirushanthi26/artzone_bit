@@ -20,6 +20,8 @@ const ProductItem = ({
   productPrice,
   productImg,
   productDescription,
+  setPageUpdateReload,
+  setPageDeleteReload
 }) => {
   const { addItem } = useCartStore();
   const { shopId } = useParams();
@@ -62,9 +64,10 @@ console.log(shopId, userId)
               productNameProps={productName}
               productPriceProps={productPrice}
               productDescriptionProps={productDescription}
+              setPageUpdateReload={setPageUpdateReload}
             />
           )}
-          {shopId == userId && <DeleteProduct pid={id} />}
+          {shopId == userId && <DeleteProduct pid={id} setPageDeleteReload={setPageDeleteReload}/>}
         </CardContent>
         <CardActions>
           <Button

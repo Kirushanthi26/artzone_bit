@@ -8,6 +8,7 @@ const UpdateProduct = ({
   productNameProps,
   productPriceProps,
   productDescriptionProps,
+  setPageUpdateReload
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -37,6 +38,7 @@ const UpdateProduct = ({
         productNameProps={productNameProps}
         productPriceProps={productPriceProps}
         productDescriptionProps={productDescriptionProps}
+        setPageUpdateReload={setPageUpdateReload}
       />
     </>
   );

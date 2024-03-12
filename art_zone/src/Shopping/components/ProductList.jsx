@@ -2,7 +2,7 @@ import React from "react";
 import { allProduct } from "../../shared/data/all_products";
 import ProductItem from "./ProductItem";
 
-const ProductList = ({productData}) => {
+const ProductList = ({productData, setPageUpdateReload, setPageDeleteReload}) => {
   console.log(productData)
 
   return (
@@ -15,6 +15,8 @@ const ProductList = ({productData}) => {
             productPrice={product.product_price}
             productImg={product.product_image}
             productDescription={product.product_description}
+            setPageUpdateReload={setPageUpdateReload}
+            setPageDeleteReload={setPageDeleteReload}
           />
         ))}
     </ul>
