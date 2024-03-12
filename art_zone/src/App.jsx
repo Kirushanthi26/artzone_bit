@@ -12,6 +12,7 @@ import Shops from "./Shopping/pages/Shops";
 import UpdateProduct from "./Shopping/pages/UpdateProduct";
 import CheckoutPage from "./Shopping/pages/CheckoutPage";
 import CreateProduct from "./Shopping/pages/CreateProduct";
+import EventsPage from "./event/pages/EventsPage";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,14 @@ const router = createBrowserRouter([
       { path: "/shops/:userID/new", element: <CreateProduct /> },
       { path: "/shops/pid", element: <UpdateProduct /> },
       { path: "/shops/:userID/checkout", element: <CheckoutPage /> },
+    ],
+  },
+  {
+    path: "/events",
+    element: <RootLayout />,
+    errorElement: <ErrorPage/>,
+    children: [
+      { path: "/events", element: <EventsPage/> },
     ],
   },
 ]);
