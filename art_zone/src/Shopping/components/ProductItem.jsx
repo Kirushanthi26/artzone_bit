@@ -26,7 +26,7 @@ const ProductItem = ({
   const { addItem } = useCartStore();
   const { shopId } = useParams();
   const { userId } = useAuthStore();
-console.log(shopId, userId)
+//console.log(shopId, userId)
 
   const handleAddItemToCart = () => {
     addItem({ id: id, name: productName, price: productPrice, quantity: 1 });
