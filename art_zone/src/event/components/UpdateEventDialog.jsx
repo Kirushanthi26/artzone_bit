@@ -1,10 +1,37 @@
 import React from 'react'
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { Button } from "@mui/material";
+import axios from 'axios';
 
-const UpdateEventDialog = () => {
+const UpdateEventDialog = ({handleClose, open}) => {
   return (
-    <div>
-      update event
-    </div>
+    <Dialog
+    open={open}
+    onClose={handleClose}
+    aria-labelledby="alert-dialog-title"
+    aria-describedby="alert-dialog-description"
+    fullWidth
+    maxWidth="md"
+  >
+    <DialogTitle id="alert-dialog-title">Update Event</DialogTitle>
+    <DialogContent>
+      <DialogContentText id="alert-dialog-description">
+   
+      <Button onClick={handleClose} sx={{marginRight:"10px"}} color="error" variant="contained">
+        Close
+      </Button>
+      <Button type="submit" variant="contained">
+        Update
+      </Button>
+      </DialogContentText>
+    </DialogContent>
+    <DialogActions sx={{ padding: "20px" }}>
+    </DialogActions>
+  </Dialog>
   )
 }
 

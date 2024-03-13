@@ -1,12 +1,36 @@
-import React from 'react'
-import CreateEventDialog from './CreateEventDialog'
+import React from "react";
+import CreateEventDialog from "./CreateEventDialog";
+import { Button } from "@mui/material";
+import { useState } from "react";
 
 const CreateEvent = () => {
-  return (
-    <div>
-      <CreateEventDialog/>
-    </div>
-  )
-}
+  const [open, setOpen] = useState(false);
 
-export default CreateEvent
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <Button
+        size="medium"
+        variant="contained"
+        color="secondary"
+        sx={{ width: "100%", marginBottom: "10px" }}
+        onClick={handleClickOpen}
+      >
+        Create Event
+      </Button>
+      <CreateEventDialog
+        handleClose={handleClose}
+        open={open}
+      />
+    </>
+  );
+};
+
+export default CreateEvent;
