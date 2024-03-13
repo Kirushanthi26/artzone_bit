@@ -4,7 +4,7 @@ import EventItem from "./EventItem";
 const EventsList = (props) => {
   return (
     <ul className="flex">
-      {props.eventData.map((eventItem) => (
+      {props.eventData.map((eventItem, index) => (
         <EventItem
           key={eventItem.eid}
           id={eventItem.eid}
@@ -13,6 +13,7 @@ const EventsList = (props) => {
           eventTime={eventItem.eventTime}
           eventDescription={eventItem.eventDescription}
           mapLocation={eventItem.mapLocation}
+          index={index}
         />
       ))}
     </ul>

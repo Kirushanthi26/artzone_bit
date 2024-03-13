@@ -6,28 +6,25 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import Iframe from "react-iframe";
+import Map from "./Map";
 
 const EventItem = ({
+  index,
   eventName,
   eventDate,
   eventTime,
   eventDescription,
   mapLocation,
 }) => {
+
+  const mapContainerId = `map-${index}`;
+  console.log(mapContainerId)
+
   return (
     <li className="mr-8 my-5">
       <Card sx={{ maxWidth: 400 }}>
         <CardContent>
-          <Iframe
-            url={mapLocation}
-            width="350px"
-            height="300px"
-            id=""
-            className=""
-            display="block"
-            position="relative"
-          />
+        <Map center={mapLocation} zoom={16} id={mapContainerId}/>
         </CardContent>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
