@@ -5,6 +5,7 @@ const path = require("path");
 
 const authRoutes = require("./routes/auth-routes");
 const shoppingRoutes = require("./routes/shopping-routes");
+const eventRoutes = require("./routes/events-routes");
 
 const app = express();
 app.use(bodyParser.json());
@@ -25,5 +26,7 @@ app.use((req, res, next) => {
 app.use("/", authRoutes);
 
 app.use("/shops", shoppingRoutes);
+
+app.use("/events", eventRoutes);
 
 app.listen(5000);
