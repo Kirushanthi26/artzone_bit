@@ -98,7 +98,7 @@ const CreateProductDialog = ({ handleClose, open, userID, setPageCreateReload })
           />
         </div>
         <div className="mb-5">
-          <label className=" font-title font-bold">Product Image URL:</label>
+          <label className=" font-title font-bold">Product Image:</label>
           <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="file"
