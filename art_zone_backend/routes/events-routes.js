@@ -9,4 +9,10 @@ router.use(checkAuth)
 
 router.get("/", eventController.getAllEvents);
 
+router.post("/:uid/new", eventController.createEvent);
+
+router.patch("/:eid", eventController.UpdateEvent);
+
+router.delete("/:eid", eventController.deleteEvent);
+
 module.exports = router;

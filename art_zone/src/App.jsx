@@ -13,6 +13,8 @@ import UpdateProduct from "./Shopping/pages/UpdateProduct";
 import CheckoutPage from "./Shopping/pages/CheckoutPage";
 import CreateProduct from "./Shopping/pages/CreateProduct";
 import EventsPage from "./event/pages/EventsPage";
+import CreateEvent from "./event/components/CreateEvent";
+import UpdateEvent from "./event/components/UpdateEvent";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +60,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       { path: "/events", element: <EventsPage/> },
+      { path: "/events/:userID/new", element: <CreateEvent/> },
+      { path: "/events/:eventID", element: <UpdateEvent/> },
     ],
   },
 ]);
