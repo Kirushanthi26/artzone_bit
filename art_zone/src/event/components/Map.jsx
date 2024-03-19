@@ -14,7 +14,7 @@ const Map = (props) => {
         }),
       ],
       view: new window.ol.View({
-        center: window.ol.proj.fromLonLat([center.lng, center.lat]),
+        center: window.ol.proj.fromLonLat([center.eventLongitude, center.eventLatitude]),
         zoom: zoom,
       }),
     });
@@ -24,7 +24,7 @@ const Map = (props) => {
         features: [
           new window.ol.Feature({
             geometry: new window.ol.geom.Point(
-              window.ol.proj.fromLonLat([center.lng, center.lat])
+              window.ol.proj.fromLonLat([center.eventLongitude, center.eventLatitude])
             ),
           }),
         ],

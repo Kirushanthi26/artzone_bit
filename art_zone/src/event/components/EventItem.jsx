@@ -16,16 +16,21 @@ const EventItem = ({
   eventDate,
   eventTime,
   eventDescription,
-  mapLocation,
+  eventLatitude,
+  eventLongitude,
 }) => {
   const mapContainerId = `map-${index}`;
   console.log(mapContainerId);
 
   return (
-    <li className="mr-8 my-5">
+    <li className="inline-block mr-8 my-5">
       <Card sx={{ maxWidth: 400 }}>
         <CardContent>
-          <Map center={mapLocation} zoom={16} id={mapContainerId} />
+          <Map
+            center={{ eventLatitude, eventLongitude }}
+            zoom={16}
+            id={mapContainerId}
+          />
         </CardContent>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

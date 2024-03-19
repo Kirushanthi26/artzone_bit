@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import EventsList from "../components/EventsList";
 import { Divider } from "@mui/material";
 import CreateEvent from "../components/CreateEvent";
+import axios from "axios";
 
 const Dummy_event = [
   {
     eid: 1,
-    mapLocation:{
+    mapLocation: {
       lat: 6.9273044588293065,
       lng: 79.8583383153592,
     },
@@ -18,7 +19,7 @@ const Dummy_event = [
   },
   {
     eid: 2,
-    mapLocation:{
+    mapLocation: {
       lat: 6.911229210936746,
       lng: 79.86339307044005,
     },
@@ -30,6 +31,29 @@ const Dummy_event = [
 ];
 
 const EventsPage = () => {
+  const [eventsData, setEventData] = useState([]);
+
+  const fetchEventData = useCallback(async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.get(`http://localhost:5000/events`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      setEventData(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchEventData();
+  }, [fetchEventData]);
+
+  console.log(eventsData);
+
   return (
     <div>
       <h2 className="text-3xl capitalize font-title font-semibold">
@@ -37,7 +61,7 @@ const EventsPage = () => {
       </h2>
       <div className="flex flex-row-reverse my-5">
         <div className="w-62">
-        <CreateEvent/>
+          <CreateEvent />
         </div>
       </div>
       <Divider />
@@ -46,7 +70,9 @@ const EventsPage = () => {
         Events List
       </h3>
       <Divider />
-      <EventsList eventData={Dummy_event} />
+      <div className="">
+        <EventsList eventData={eventsData} />
+      </div>
     </div>
   );
 };
