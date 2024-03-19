@@ -13,7 +13,7 @@ const getAllEvents = async (req, res, next) => {
 };
 
 const createAttentEvent = async (req, res, next) => {
-  
+
 };
 
 const createEvent = async (req, res, next) => {

@@ -2,8 +2,6 @@ import React from "react";
 import EventsList from "../components/EventsList";
 import { Divider } from "@mui/material";
 import CreateEvent from "../components/CreateEvent";
-import UpdateEvent from "../components/UpdateEvent";
-import DeleteEvent from "../components/DeleteEvent";
 
 const Dummy_event = [
   {
@@ -37,10 +35,10 @@ const EventsPage = () => {
       <h2 className="text-3xl capitalize font-title font-semibold">
         My Events
       </h2>
-      <div>
+      <div className="flex flex-row-reverse my-5">
+        <div className="w-62">
         <CreateEvent/>
-        <UpdateEvent/>
-        <DeleteEvent/>
+        </div>
       </div>
       <Divider />
 

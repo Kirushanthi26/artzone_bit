@@ -7,6 +7,8 @@ import {
 } from "@mui/material";
 import React from "react";
 import Map from "./Map";
+import UpdateEvent from "./UpdateEvent";
+import DeleteEvent from "./DeleteEvent";
 
 const EventItem = ({
   index,
@@ -16,15 +18,14 @@ const EventItem = ({
   eventDescription,
   mapLocation,
 }) => {
-
   const mapContainerId = `map-${index}`;
-  console.log(mapContainerId)
+  console.log(mapContainerId);
 
   return (
     <li className="mr-8 my-5">
       <Card sx={{ maxWidth: 400 }}>
         <CardContent>
-        <Map center={mapLocation} zoom={16} id={mapContainerId}/>
+          <Map center={mapLocation} zoom={16} id={mapContainerId} />
         </CardContent>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -42,6 +43,10 @@ const EventItem = ({
           >
             {eventDescription}
           </Typography>
+        </CardContent>
+        <CardContent>
+          <UpdateEvent />
+          <DeleteEvent />
         </CardContent>
         <CardActions>
           <Button

@@ -60,8 +60,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       { path: "/events", element: <EventsPage/> },
-      { path: "/events/:userID/new", element: <CreateEvent/> },
-      { path: "/events/:eventID", element: <UpdateEvent/> },
+      // { path: "/events/:userId/new", element: <CreateEvent/> },
+      // { path: "/events/:eventID", element: <UpdateEvent/> },
     ],
   },
 ]);
