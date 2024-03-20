@@ -15,6 +15,8 @@ import CreateProduct from "./Shopping/pages/CreateProduct";
 import EventsPage from "./event/pages/EventsPage";
 import CreateEvent from "./event/components/CreateEvent";
 import UpdateEvent from "./event/components/UpdateEvent";
+import Dashboard from "./Shopping/pages/Dashboard";
+import ViewOrderDetails from "./Shopping/components/ViewOrderDetails";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,8 @@ const router = createBrowserRouter([
       { path: "/shops/:userID/new", element: <CreateProduct /> },
       { path: "/shops/pid", element: <UpdateProduct /> },
       { path: "/shops/:userID/checkout", element: <CheckoutPage /> },
+      { path: "/shops/:shopId/dashboard", element: <Dashboard/> },
+      { path: "/shops/order/:oid", element: <ViewOrderDetails/> },
     ],
   },
   {

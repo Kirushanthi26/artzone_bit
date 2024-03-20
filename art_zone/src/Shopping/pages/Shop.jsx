@@ -1,7 +1,7 @@
 import { Divider } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
 import ProductList from "../components/ProductList";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CreateProduct from "./CreateProduct";
 import axios from "axios";
 import { useAuthStore } from "../../shared/store/useAuthStore";
@@ -36,9 +36,9 @@ const Shop = () => {
 
   useEffect(() => {
     fetchShopData();
-    setPageCreateReload(false)
-    setPageUpdateReload(false)
-    setPageDeleteReload(false)
+    setPageCreateReload(false);
+    setPageUpdateReload(false);
+    setPageDeleteReload(false);
   }, [fetchShopData]);
 
   if (!shopData) {
@@ -68,12 +68,20 @@ const Shop = () => {
           <h4 className="text-l capitalize font-title font-normal mb-8">
             {shopData.phone_no}
           </h4>
-          {shopId == userId && (
-            <CreateProduct
-              shopId={shopId}
-              setPageCreateReload={setPageCreateReload}
-            />
-          )}
+          <div className="flex">
+            {shopId == userId && (
+              <CreateProduct
+                shopId={shopId}
+                setPageCreateReload={setPageCreateReload}
+              />
+            )}
+            <Link
+              to={`/shops/${userId}/dashboard`}
+              className="ml-5 px-5 py-3 bg-yellow-500 rounded-md"
+            >
+              Dashboard
+            </Link>
+          </div>
         </div>
       </div>
       <Divider />
