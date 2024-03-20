@@ -17,6 +17,7 @@ import CreateEvent from "./event/components/CreateEvent";
 import UpdateEvent from "./event/components/UpdateEvent";
 import Dashboard from "./Shopping/pages/Dashboard";
 import ViewOrderDetails from "./Shopping/components/ViewOrderDetails";
+import FriendRequest from "./User/pages/FriendRequest";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       { path: "/u1/profile", element: <UserProfile /> },
+    ],
+  },
+  {
+    path: "/friends",
+    element: <RootLayout />,
+    errorElement: <ErrorPage/>,
+    children: [
+      { path: "/friends", element: <FriendRequest/> },
     ],
   },
   {
